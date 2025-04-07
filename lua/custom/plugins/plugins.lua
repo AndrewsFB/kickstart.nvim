@@ -1,6 +1,14 @@
 return {
 
   {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
+  },
+
+  {
     'xiyaowong/transparent.nvim',
     config = function()
       require('transparent').setup {
@@ -31,7 +39,10 @@ return {
           'StatusLineNC',
           'EndOfBuffer',
         },
-        extra_groups = {},
+        extra_groups = {
+          'NvimTreeNormal',
+          'NvimTreeEndOfBuffer',
+        },
         exclude_groups = {},
       }
     end,
