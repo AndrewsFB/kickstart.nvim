@@ -15,11 +15,14 @@ return {
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      client.resolved_capabilities.document_formatting = true
+      client.resolved_capabilities.document_range_formatting = true
     end,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
   },
 
   require('lspconfig').omnisharp.setup {
+    cmd = { 'dotnet', '~/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll' },
     on_attach = function(client, bufnr)
       local opts = { noremap = true, silent = true }
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
